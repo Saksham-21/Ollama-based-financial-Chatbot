@@ -121,7 +121,7 @@ with st.container():
             st.markdown(f'<div class="chat-bubble bot"><strong>Bot:</strong> {message["content"]}<div class="timestamp">{message["timestamp"]}</div></div>', unsafe_allow_html=True)
     st.markdown('</div>', unsafe_allow_html=True)
 
-    with st.form(key='chat_form'):
+    with st.form(key='chat_form',clear_on_submit=True):
         st.markdown('<div class="input-container">', unsafe_allow_html=True)
         user_input = st.text_input("", key="user_input", placeholder="Type your message here...")
         submit_button = st.form_submit_button(label='Send')
@@ -130,5 +130,6 @@ with st.container():
             response = sendPrompt(user_input)
             st.session_state.history.append({'role': 'user', 'content': user_input,'timestamp': datetime.now().strftime('%Y-%m-%d %H:%M:%S')})
             st.session_state.history.append({'role': 'bot', 'content': response,'timestamp': datetime.now().strftime('%Y-%m-%d %H:%M:%S')})
+            st.experimental_rerun()
 
 st.write('<script>window.scrollTo(0,document.body.scrollHeight);</script>', unsafe_allow_html=True)
