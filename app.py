@@ -100,7 +100,7 @@ def sendPrompt(prompt):
 if 'history' not in st.session_state:
     st.session_state.history = []
     response = sendPrompt(initial_prompt)
-    st.session_state.history.append({'role': 'bot', 'content': response})
+    st.session_state.history.append({'role': 'bot', 'content': response,'timestamp': datetime.now().strftime('%Y-%m-%d %H:%M:%S')})
 
 st.sidebar.header("Ask your finance-related question:")
 st.sidebar.write("Type your question below and click 'Enter'.")
