@@ -1,5 +1,4 @@
 import streamlit as st
-import ollama
 from datetime import datetime
 from langchain_community.llms import Ollama
 
